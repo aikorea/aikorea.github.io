@@ -62,4 +62,4 @@ PyCUDA를 활용하여 구현된 딥러닝/신경망 라이브러리
 ## Haskell
 1. [DNNGraph](https://github.com/ajtulloch/dnngraph)
 
-출처: http://www.teglor.com/b/deep-learning-libraries-language-c…/ 블로그 포스트 자료에서 약간의 수정을 거쳤습니다.
+출처: http://www.teglor.com/b/deep-learning-libraries-language-cm569/ 블로그 포스트 자료에서 약간의 수정을 거쳤습니다.
