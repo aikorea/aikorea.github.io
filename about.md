@@ -5,13 +5,6 @@ permalink: /about/
 published: true
 ---
 
+### Contact
 
-Some information about Jiwon Kim!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[firstname@alum.mit.edu](mailto:firstname@alum.mit.edu)
+[jiwon@alum.mit.edu](mailto:jiwon@alum.mit.edu)
