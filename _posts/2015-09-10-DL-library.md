@@ -9,12 +9,12 @@ AI Korea Open 그룹에서도 라이브러리에 관한 *[투표](https://www.fa
 
 ## Python
 요즘 뜨는 언어답게, 대부분의 라이브러리들이 빠른 속도로 업데이트되며 새로운 기능이 계속 추가되고 있다. 
-1. [Theano](http://deeplearning.net/software/theano) - 수식 및 행렬 연산을 쉽게 만들어주는 파이썬 라이브러리.
-딥러닝 알고리즘을 파이썬으로 쉽게 구현할 수 있도록 해주는데, Theano 기반 위에 얹어서 더 사용하기 쉽게 구현된 여러 라이브러리가 있다.
-  * [Keras](http://keras.io/) - Theano 기반이지만 Torch처럼 모듈화가 잘 되어 있어서 사용하기 쉽고 최근에도 계속 업데이트되며 빠른 속도로 발전하고 있는 라이브러리.
-  * [Pylearn2](http://deeplearning.net/software/pylearn2/) - Theano를 유지, 보수하고 있는 Montreal 대학의 Yoshua Bengio 그룹에서 개발한 Machine Learning 연구용 라이브러리
-  * [Lasagne](https://github.com/Lasagne/Lasagne) - 가볍고 모듈화가 잘 되어 있어서 사용하기 편리함
-  * [Blocks](https://github.com/mila-udem/blocks) - 위 라이브러리와 비슷하게 역시 Theano 기반으로 손쉽게 신경망 구조를 구현할 수 있도록 해주는 라이브러리 
+
+1. [Theano](http://deeplearning.net/software/theano) - 수식 및 행렬 연산을 쉽게 만들어주는 파이썬 라이브러리. 딥러닝 알고리즘을 파이썬으로 쉽게 구현할 수 있도록 해주는데, Theano 기반 위에 얹어서 더 사용하기 쉽게 구현된 여러 라이브러리가 있다.
+   * [Keras](http://keras.io/) - Theano 기반이지만 Torch처럼 모듈화가 잘 되어 있어서 사용하기 쉽고 최근에도 계속 업데이트되며 빠른 속도로 발전하고 있는 라이브러리.
+   * [Pylearn2](http://deeplearning.net/software/pylearn2/) - Theano를 유지, 보수하고 있는 Montreal 대학의 Yoshua Bengio 그룹에서 개발한 Machine Learning 연구용 라이브러리
+   * [Lasagne](https://github.com/Lasagne/Lasagne) - 가볍고 모듈화가 잘 되어 있어서 사용하기 편리함
+   * [Blocks](https://github.com/mila-udem/blocks) - 위 라이브러리와 비슷하게 역시 Theano 기반으로 손쉽게 신경망 구조를 구현할 수 있도록 해주는 라이브러리 
 2. [Chainer](http://chainer.org/) - 거의 모든 딥러닝 알고리즘을 직관적인 Python 코드로 구현할 수 있고, 자유도가 매우 높음. 대다수의 다른 라이브러리들과는 다르게 "Define-by-Run" 형태로 구현되어 있어서, forward 함수만 정의해주면 네트워크 구조가 자동으로 정해진다는 점이 특이하다.
 3. [nolearn](https://github.com/dnouri/nolearn) - scikit-learn과 연동되며 기계학습에 유용한 여러 함수를 담고 있음.
 4. [Gensim](http://radimrehurek.com/gensim/) - 큰 스케일의 텍스트 데이터를 효율적으로 다루는 것을 목표로 한 Python 기반 딥러닝 툴킷
@@ -42,6 +42,7 @@ AI Korea Open 그룹에서도 라이브러리에 관한 *[투표](https://www.fa
 
 ## JavaScript
 자바스크립트로의 딥러닝 구현은 Stanford의 Andrej Karpathy가 혼자서 개발했음에도 불구하고 높은 완성도를 보이며 널리 사용되고 있는 아래 두 라이브러리가 가장 유명하다.
+
 1. [ConvnetJS](http://cs.stanford.edu/people/karpathy/convnetjs/)
 2. [RecurrentJS](https://github.com/karpathy/recurrentjs)
 
@@ -50,6 +51,7 @@ AI Korea Open 그룹에서도 라이브러리에 관한 *[투표](https://www.fa
 
 ## Julia
 MIT에서 새로 개발한 언어로, 최근에 주목받기 시작하여 효율적인 딥 러닝 라이브러리도 여러 가지 구현되었다.
+
 1. [Mocha.jl](https://github.com/pluskid/Mocha.jl)
 2. [Strada.jl](https://github.com/pcmoritz/Strada.jl)
 3. [KUnet.jl](https://github.com/denizyuret/KUnet.jl)
