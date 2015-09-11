@@ -4,7 +4,9 @@ title: 프로그래밍 언어별 딥러닝 라이브러리 정리
 ---
 
 AI Korea Open 그룹에서도 라이브러리에 관한 *[투표](https://www.facebook.com/groups/AIKoreaOpen/permalink/1029968110370632/)*가 있었고, 많은 분들이 관심있어할 만한 부분이라 생각해서 한 번 정리해 봤습니다!
-![dl_library_vote](https://www.dropbox.com/s/svrlvvdgd1ykci9/DL_lib_vote.PNG)
+
+![dl_library_vote](https://raw.githubusercontent.com/aikorea/aikorea.github.io/9d063d4221aaf88a7d64c71340f3962bdd6f31ef/images/DL_lib_vote.PNG)
+(AI Korea Open 그룹의 *[투표](https://www.facebook.com/groups/AIKoreaOpen/permalink/1029968110370632/)* 결과)
 
 
 ## Python
