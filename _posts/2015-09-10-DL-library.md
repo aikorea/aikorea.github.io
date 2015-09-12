@@ -54,12 +54,12 @@ AI Korea Open 그룹에서도 라이브러리에 관한 *[투표](https://www.fa
 ## Julia
 MIT에서 새로 개발한 언어로, 최근에 주목받기 시작하여 효율적인 딥 러닝 라이브러리도 여러 가지 구현되었다.
 
-1. [Mocha.jl](https://github.com/pluskid/Mocha.jl) - C++ 프레임워크인 Caffe에 영감을 받아 만들어진 Julia 기반의 딥러닝 프레임워크. Mocha의 General stochastic solver와 공통 레이어를 사용해 deep / shallow(convolutional) neural network를 학습하고 (stacked) auto-encoder를 통해 unsupervised pre-training을 할 수 있다. 모듈화된 구조, 하이 레벨 인터페이스, 이식성, 빠른 속도, 호환성등을 특징으로 합니다.
+1. [Mocha.jl](https://github.com/pluskid/Mocha.jl) - C++ 프레임워크인 Caffe에 영감을 받아 만들어진 Julia 기반의 딥러닝 프레임워크. Mocha의 General stochastic solver와 공통 레이어를 사용해 deep / shallow(convolutional) neural network를 학습하고 (stacked) auto-encoder를 통해 unsupervised pre-training을 할 수 있다. 모듈화된 구조, 하이 레벨 인터페이스, 이식성, 빠른 속도, 호환성등을 특징으로 한다.
 2. [Strada.jl](https://github.com/pcmoritz/Strada.jl) - Caffe 프레임워크를 기반으로 해 만들어진 오픈소스 딥러닝 라이브러리. CNN과 RNN을 CPU/GPU로 학습할 수 있다.
 3. [KUnet.jl](https://github.com/denizyuret/KUnet.jl) - 최대한 적은 양의 코드로 작성하고자 하는 시도에서 만들어진 딥러닝 패키지. 현재 1000 라인 미만의 코드로 여러 네트워크, activation, optimization을 구현하고 있고, CPU/GPU를 사용해 Caffe와 비슷한 성능으로 학습할 수 있다고 한다.
 
 ## Lisp
-1. [Lush](http://lush.sourceforge.net/) - Lisp Universal Shell. 대규모 수치, 그래픽 어플리케이션을 위한 객체 지향 프로그래밍 언어. 풍부한 양의 딥러닝 라이브러리가 머신러닝 라이브러리에 포함되어 제공됩니다.
+1. [Lush](http://lush.sourceforge.net/) - Lisp Universal Shell. 대규모 수치, 그래픽 어플리케이션을 위한 객체 지향 프로그래밍 언어. 딥러닝 라이브러리가 머신러닝 라이브러리에 포함되어 제공된다.
 
 ## Haskell
 1. [DNNGraph](https://github.com/ajtulloch/dnngraph) - Haskell로 작성된 deep neural network 모델 생성 DSL(domain-specific language)
