@@ -1,12 +1,9 @@
 ---
 layout: page
-title: About
 permalink: /about/
 published: true
 ---
 
-AI Korea는 인공지능을 좋아하는 사람들의 모임입니다. 인공지능의 범주에는 컴퓨터비전, 머신러닝, 로보틱스 그리고 자연어처리 등이 포함되며 최근에는 딥러닝 기법 활용에 큰 관심을 갖고 있습니다. 
-
-### Contact
+# Contact
 
 [jiwon@alum.mit.edu](mailto:jiwon@alum.mit.edu)
