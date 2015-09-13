@@ -72,3 +72,5 @@ MIT에서 새로 개발한 언어로, 최근에 주목받기 시작하여 효율
 2. [deepnet](https://cran.r-project.org/web/packages/deepnet/index.html) - BP, RBM, DBN, Deep autoencoder 등의 딥러닝 아키텍쳐, neural network 알고리즘을 구현한 패키지.
 
 출처: http://www.teglor.com/b/deep-learning-libraries-language-cm569/ 블로그 포스트 자료에서 약간의 수정을 거쳤습니다.
+
+작성자: 최명섭, 김주용 
