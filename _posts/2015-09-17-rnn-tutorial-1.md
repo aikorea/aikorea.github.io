@@ -1,13 +1,14 @@
 ---
 layout: post
-title: RNN Tutorial
+title: Recurrent Neural Network (RNN) Tutorial - Part 1
 ---
 
-WildML이라는 블로그를 발견했는데 RNN에 관련된 좋은 튜토리얼이 있어서 번역해 보았습니다.
+[WildML](http://www.wildml.com/)이라는 블로그를 발견했는데 [RNN에 관련된 좋은 튜토리얼(영어)](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/)이 있어서 번역해 보았습니다. 중간중간에 애매한 용어들은 그냥 영어로 남겨놓았는데, 번역이 이상한 부분을 발견하셨다던지 질문이 있으시면 댓글로 알려주세요!
 
-# Recurrent Neural Network (RNN) Tutorial - Part 1
+---
 
-RNN은 다양한 자연어처리(NLP) 문제에 대해 뛰어난 성능을 보이고 있는 인기있는 모델이다. 하지만 최근의 인기에 비해 실제로 RNN이 어떻게 동작하는지, 어떻게 구현해야 하는지에 대해 쉽게 설명해놓은 자료는 상당히 부족한 편이다. 따라서 이 튜토리얼에서는 아래 내용을 하나하나 자세히 다루려고 한다.
+
+RNN은 다양한 자연어처리(NLP) 문제에 대해 뛰어난 성능을 보이고 있는 인기있는 모델이다. 하지만 최근의 인기에 비해 실제로 RNN이 어떻게 동작하는지, 어떻게 구현해야 하는지에 대해 쉽게 설명해놓은 자료는 상당히 부족한 편이다. 따라서 이 튜토리얼에서는 아래 내용을 하나하나 자세히 다루고자 한다.
 
 1. Introduction to RNNs (현재 포스트)
 2. Python과 [Theano](http://deeplearning.net/software/theano/)를 이용한 RNN 구현 방법
@@ -26,14 +27,16 @@ RNN에 대한 기본적인 아이디어는 순차적인 정보를 처리한다�
 
 위 그림에서 RNN의 recurrent한 연결이 펼쳐진 것을 볼 수 있다. RNN 네트워크를 "펼친다"는 말은 간단히 말해서 네트워크를 전체 시퀀스에 대해 그려놓았다고 보면 된다. 즉, 우리가 관심있는 시퀀스 정보가 5개의 단어로 이루어진 문장이라면, RNN 네트워크는 한 단어당 하나의 layer씩 (recurrent 연결이 없는, 또는 사이클이 없는) 5-layer 신경망 구조로 펼쳐질 것이다. RNN 구조에서 일어나는 계산에 대한 식은 아래와 같다.
 
-- $x_t$는 시간 스텝(time step) $t$에서의 입력값이다.
-- $s_t$는 시간 스텝 $t$에서의 hidden state이다. 네트워크의 "메모리" 부분으로서, 이전 시간 스텝의 hiddent state 값과 현재 시간 스텝의 입력값에 의해 계산된다: $s_t = f(Ux_t+Ws_{t-1})$. 비선형 함수 $f$는 보통 [tanh](https://reference.wolfram.com/language/ref/Tanh.html)나 [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks))가 사용되고, 첫 hidden state를 계산하기 위한 $s_{-1}$은 보통 0으로 초기화시킨다.
-- $o_t$는 시간 스텝 $t$에서의 출력값이다. 예를 들어, 문장에서 다음 단어를 추측하고 싶다면 단어 수만큼의 차원의 확률 벡터가 될 것이다. $o_t = softmax(Vs_t)$
+- ![x_t](http://s0.wp.com/latex.php?latex=x_t&bg=ffffff&fg=000&s=0)는 시간 스텝(time step) ![t](http://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0)에서의 입력값이다.
+- ![s_t](http://s0.wp.com/latex.php?latex=s_t&bg=ffffff&fg=000&s=0)는 시간 스텝 ![t](http://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0)에서의 hidden state이다. 네트워크의 "메모리" 부분으로서, 이전 시간 스텝의 hiddent state 값과 현재 시간 스텝의 입력값에 의해 계산된다: ![s_t=f(Ux_t+Ws_t-1)](http://s0.wp.com/latex.php?latex=s_t%3Df%28Ux_t+%2B+Ws_%7Bt-1%7D%29&bg=ffffff&fg=000&s=0). 비선형 함수 ![f](http://s0.wp.com/latex.php?latex=f&bg=ffffff&fg=000&s=0)는 보통 [tanh](https://reference.wolfram.com/language/ref/Tanh.html)나 [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks))가 사용되고, 첫 hidden state를 계산하기 위한 ![s_-1](http://s0.wp.com/latex.php?latex=s_%7B-1%7D&bg=ffffff&fg=000&s=0)은 보통 0으로 초기화시킨다.
+- ![o_t](http://s0.wp.com/latex.php?latex=o_t&bg=ffffff&fg=000&s=0)는 시간 스텝 ![t](http://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0)에서의 출력값이다. 예를 들어, 문장에서 다음 단어를 추측하고 싶다면 단어 수만큼의 차원의 확률 벡터가 될 것이다. ![o_t = softmax(Vs_t)](http://s0.wp.com/latex.php?latex=o_t+%3D+%5Cmathrm%7Bsoftmax%7D%28Vs_t%29&bg=ffffff&fg=000&s=0)
 
 몇 가지 짚어두고 넘어갈 점이 있다.
-- Hidden state $s_t$는 네트워크의 메모리라고 생각할 수 있다. $s_t$는 과거의 시간 스텝들에서 일어난 일들에 대한 정보를 전부 담고 있고, 출력값 $o_t$는 오로지 현재 시간 스텝 $t$의 메모리에만 의존한다. 하지만 위에서 잠깐 언급했듯이, 실제 구현에서는 너무 먼 과거에 일어난 일들은 잘 기억하지 못한다.
+
+- Hidden state ![s_t](http://s0.wp.com/latex.php?latex=s_t&bg=ffffff&fg=000&s=0)는 네트워크의 메모리라고 생각할 수 있다. ![s_t](http://s0.wp.com/latex.php?latex=s_t&bg=ffffff&fg=000&s=0)는 과거의 시간 스텝들에서 일어난 일들에 대한 정보를 전부 담고 있고, 출력값 ![o_t](http://s0.wp.com/latex.php?latex=o_t&bg=ffffff&fg=000&s=0)는 오로지 현재 시간 스텝 ![t](http://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0)의 메모리에만 의존한다. 하지만 위에서 잠깐 언급했듯이, 실제 구현에서는 너무 먼 과거에 일어난 일들은 잘 기억하지 못한다.
 - 각 layer마다의 파라미터 값들이 전부 다 다른 기존의 deep한 신경망 구조와 달리, RNN은 모든 시간 스텝에 대해 파라미터 값을 전부 공유하고 있다 (위 그림의 U, V, W). 이는 RNN이 각 스텝마다 입력값만 다를 뿐 거의 똑같은 계산을 하고 있다는 것을 보여준다. 이는 학습해야 하는 파라미터 수를 많이 줄여준다.
 - 위 다이어그램에서는 매 시간 스텝마다 출력값을 내지만, 문제에 따라 달라질 수도 있다. 예를 들어, 문장에서 긍정/부정적인 감정을 추측하고 싶다면 굳이 모든 단어 위치에 대해 추측값을 내지 않고 최종 추측값 하나만 내서 판단하는 것이 더 유용할 수도 있다. 마찬가지로, 입력값 역시 매 시간 스텝마다 꼭 다 필요한 것은 아니다. RNN에서의 핵심은 시퀀스 정보에 대해 어떠한 정보를 추출해 주는 hidden state이기 때문이다.
+
 
 ## RNN으로 무엇을 할 수 있을까?
 
@@ -41,9 +44,10 @@ RNN은 많은 자연어처리 문제에서 성공적으로 적용되었다. 현�
 
 ### 언어 모델링과 텍스트 생성
 
-언어 모델은 주어진 문장에서 이전 단어들을 보고 다음 단어가 나올 확률을 계산해주는 모델이다. 언어 모델은 어떤 문장이 실제로 존재할 확률이 얼마나 되는지 계산해주기 때문에, 자동 번역의 출력값으로 어떤 문장을 내보내는 것이 더 좋은지 (실생활에서 높은 확률로 존재하는 문장들은 보통 문법적/의미적으로 올바르기 때문) 알려줄 수 있다. 문장에서 다음 단어가 나타날 확률을 계산해주는 주 목적 외의 부수적인 효과로 *생성(generative)* 모델을 얻을 수 있는데, 출력 확률 분포에서 샘플링을 통해 문장의 다음 단어가 무엇이 되면 좋을지 정한다면 기존에 없던 새로운 문장을 생성할 수 있다. 또한, 학습 데이터에 따라 [다양하고 재밌는](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) 여러 가지를 만들어낼 수도 있다. 언어 모델에서의 입력값은 단어들의 시퀀스 (e.g. one-hot encoded 벡터 시퀀스)이고, 출력은 추측된 단어들의 시퀀스이다. 네트워크를 학습할 때에는 시간 스텝 $t$에서의 출력값이 실제로 다음 입력 단어가 되도록 $o_t=x_{t+1}$로 정해준다.
+언어 모델은 주어진 문장에서 이전 단어들을 보고 다음 단어가 나올 확률을 계산해주는 모델이다. 언어 모델은 어떤 문장이 실제로 존재할 확률이 얼마나 되는지 계산해주기 때문에, 자동 번역의 출력값으로 어떤 문장을 내보내는 것이 더 좋은지 (실생활에서 높은 확률로 존재하는 문장들은 보통 문법적/의미적으로 올바르기 때문) 알려줄 수 있다. 문장에서 다음 단어가 나타날 확률을 계산해주는 주 목적 외의 부수적인 효과로 *생성(generative)* 모델을 얻을 수 있는데, 출력 확률 분포에서 샘플링을 통해 문장의 다음 단어가 무엇이 되면 좋을지 정한다면 기존에 없던 새로운 문장을 생성할 수 있다. 또한, 학습 데이터에 따라 [다양하고 재밌는](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) 여러 가지를 만들어낼 수도 있다. 언어 모델에서의 입력값은 단어들의 시퀀스 (e.g. one-hot encoded 벡터 시퀀스)이고, 출력은 추측된 단어들의 시퀀스이다. 네트워크를 학습할 때에는 시간 스텝 ![t](http://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0)에서의 출력값이 실제로 다음 입력 단어가 되도록 ![o_t=x_{t+1}](http://s0.wp.com/latex.php?latex=o_t+%3D+x_%7Bt%2B1%7D&bg=ffffff&fg=000&s=0)로 정해준다.
 
 언어 모델링 및 텍스트 생성에 관련된 연구 논문들:
+
 - [Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)
 - [Extensions of Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2011/mikolov_icassp2011_5528.pdf)
 - [Generating Text with Recurrent Neural Networks](http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Sutskever_524.pdf)
@@ -56,6 +60,7 @@ RNN은 많은 자연어처리 문제에서 성공적으로 적용되었다. 현�
 ![rnn_machine_translation](http://www.wildml.com/wp-content/uploads/2015/09/Screen-Shot-2015-09-17-at-10.39.06-AM-1024x557.png)
 
 번역에 관련된 연구 논문들:
+
 - [A Recursive Recurrent Neural Network for Statistical Machine Translation](http://www.aclweb.org/anthology/P14-1140.pdf)
 - [Sequence to Sequence Learning with Neural Networks](http://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)
 - [Joint Language and Translation Modeling with Recurrent Neural Networks](http://research.microsoft.com/en-us/um/people/gzweig/Pubs/EMNLP2013RNNMT.pdf)
@@ -65,6 +70,7 @@ RNN은 많은 자연어처리 문제에서 성공적으로 적용되었다. 현�
 사운드 웨이브의 음향 신호(acoustic signal)를 입력으로 받아들이고, 출력으로는 음소(phonetic segment)들의 시퀀스와 각각의 음소별 확률 분포를 추측할 수 있다.
 
 음성 인식 관련 연구 논문:
+
 - [Towards End-to-End Speech Recognition with Recurrent Neural Networks](http://www.jmlr.org/proceedings/papers/v32/graves14.pdf)
 
 ### 이미지 캡션 생성
@@ -73,13 +79,25 @@ RNN은 많은 자연어처리 문제에서 성공적으로 적용되었다. 현�
 
 ![rnn_captioning](http://www.wildml.com/wp-content/uploads/2015/09/Screen-Shot-2015-09-17-at-11.44.24-AM.png)
 
+
 ## RNN 학습하기
+
+RNN 네트워크를 학습하는 것은 기존의 신경망 모델 학습과 매우 유사하다. 네트워크의 각 시간 스텝마다 파라미터들이 공유되기 때문에 펼쳐진 네트워크에서 기존의 backpropagation 알고리즘을 그대로 사용하진 못하고 Backpropagation Through Time (BPTT)라는 약간 변형된 알고리즘을 사용한다. 그 이유는, 각 출력 부분에서의 gradient가 현재 시간 스텝에만 의존하지 않고 이전 시간 스텝들에도 의존하기 때문이다. 즉, t=4에서의 gradient를 계산하기 위해서는 시간 스텝 3개 이전부터 gradient를 전부 더해주어야 한다. 이 부분에 대해서는 나중 포스트에서 더 자세히 다룰 것이므로 잘 이해가 가지 않더라도 괜찮지만, vanishing/exploding gradient라는 문제 등에 의해서 단순한 RNN을 BPTT로 학습시키는 것은 긴 시퀀스를 다루기 [어렵다는](http://www.jmlr.org/proceedings/papers/v28/pascanu13.pdf) 정도로만 알아두자. 이를 해결하기 위한 여러 트릭들이 존재하고, LSTM 등 이 문제를 해결하기 위한 다양한 변종(확장된) RNN 모델들도 존재한다.
+
 
 ## RNN - 확장된 모델들
 
+RNN의 기본 모델의 여러 단점들을 보완하기 위해 여러 정교한 변화를 준 RNN 모델들이 연구되었다. 이에 대해서는 나중 포스트에서 보다 더 자세히 다루겠지만, 이 섹션에서 대략적인 소개를 하고 넘어갈까 한다.
+
+**Bidirectional RNN**은 시간 스텝 ![t](http://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0)에서의 출력값이 이전 시간 스텝 외에, 이후의 시간 스텝에서 들어오는 입력값에도 영향을 받을 수 있다는 아이디어에 기반한다. 예를 들어, 영어 문제에서 빈칸에 가장 알맞는 단어를 채우기 위해서는 빈칸보다 앞쪽 문장들도 봐야겠지만, 빈칸 이후의 단어들도 문맥을 파악하는데 도움이 될 것이기 때문이다. 네트워크 구조는 RNN에서 단순히 확장되어서, 아래 그림처럼 두 개의 RNN이 동시에 존재하고, 출력값은 두 RNN의 hidden state에 모두 의존하도록 계산된다.
+
 ![bidirectional-rnn](http://www.wildml.com/wp-content/uploads/2015/09/bidirectional-rnn-300x196.png)
 
+**Deep (Bidirectional) RNN**은 위 구조와 비슷하지만, 매 시간 스텝마다 여러 layer가 있다. 실제 구현에서는 이러한 구조가 학습할 수 있는 capacity가 크다 (당연히, 학습 데이터는 훨씬 더 많이 필요하다).
+
 ![deep-brnn](http://www.wildml.com/wp-content/uploads/2015/09/Screen-Shot-2015-09-16-at-2.21.51-PM-272x300.png)
+
+**LSTM 네트워크**는 최근에 매우 인기있는 구조로 앞서 잠깐 언급한 바 있다. LSTM은 RNN에 비해 본질적으로 다른 구조를 갖고 있다고 하긴 힘들지만, hidden state를 계산하는데 다른 식을 사용한다. LSTM에서는 RNN의 뉴런 대신에 *메모리 셀*이라고 불리는 구조를 사용하는데, 입력값으로 이전 state ![h_t-1](http://s0.wp.com/latex.php?latex=h_%7Bt-1%7D&bg=ffffff&fg=000&s=0)와 현재 입력값 ![x_t](http://s0.wp.com/latex.php?latex=x_t&bg=ffffff&fg=000&s=0)를 입력으로 받는 블랙박스 형태로 생각하면 된다. 메모리 셀 내부에서는 이전 메모리 값을 그대로 남길지 지울지 정하고, 현재 state와 메모리 셀의 입력값을 토대로 현재 메모리에 저장할 값을 계산한다. 이러한 구조는 긴 시퀀스를 기억하는데 매우 효과적이었다. 처음엔 이 구조가 헷갈릴 수도 있지만, 더 자세한 정보를 원한다면 [이 블로그 포스트](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)에 잘 설명되어 있다. (단, 영어로..)
 
 
 ## 결론
