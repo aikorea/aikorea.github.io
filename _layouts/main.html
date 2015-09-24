@@ -1,0 +1,395 @@
+<!--
+Create upon the Flatfy Theme by [Andrea Galanti](http://www.andreagalanti.it)
+-->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="{{ site.name }}">
+    <meta name="author" content="{{ site.name }}">
+
+    <title>{{ site.name }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Google Web Font -->
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom CSS-->
+    <link href="static/css/general.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/style.css" rel="stylesheet">
+
+     <!-- Owl-Carousel -->
+    <link href="static/css/custom.css" rel="stylesheet">
+    <link href="static/css/owl.carousel.css" rel="stylesheet">
+    <link href="static/css/owl.theme.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/animate.css" rel="stylesheet">
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+
+    <script src="static/js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
+</head>
+
+<body id="home">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+
+    <!-- FullScreen -->
+    <div class="intro-header">
+        <div class="col-xs-12 text-center abcen1">
+            <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">{{ site.name }}</h1>
+            <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">{{ site.description }}</h3>
+            <div class="list-inline intro-social-buttons">
+            {% include svg-icons.html %}
+            </div>
+        </div>
+        <!-- /.container -->
+        <div class="col-xs-12 text-center abcen wow fadeIn">
+            <div class="button_down">
+                <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#about"> <img class="img_scroll" src="static/img/icon/circle.png" alt=""> </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NavBar-->
+    <!--
+    <nav class="navbar-default" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menuItem"><a href="#about">About</a></li>
+                    <li class="menuItem"><a href="#projects">Projects</a></li>
+                    <li class="menuItem"><a href="#team">Team</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    -->
+
+    <!-- About -->
+    <div id="about" class="content-section-b" style="border-top: 0">
+        <div class="container">
+
+            <div class="text-center wrap_title">
+                <h2>About</h2>
+                <p class="lead" style="margin-top:0">Our vision.</p>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 lead">
+                {{ content }}
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img class="rotate" src="static/img/icon/tweet.svg" alt="Generic placeholder image">
+                    <h3>Follow Me</h3>
+                    <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img  class="rotate" src="static/img/icon/picture.svg" alt="Generic placeholder image">
+                    <h3>Gallery</h3>
+                    <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-sm-4 wow fadeInDown text-center">
+                    <img  class="rotate" src="static/img/icon/retina.svg" alt="Generic placeholder image">
+                    <h3>Retina</h3>
+                    <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+                </div><!-- /.col-lg-4 -->
+
+            </div><!-- /.row -->
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div id ="projects" class="content-section-a">
+        <div class="container">
+
+            <div class="text-center wrap_title">
+                <h2>Our Projects</h2>
+                <p class="lead" style="margin-top:0">Some great things we're working on.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 wow fadeInLeftBig">
+                     <div id="owl-demo-1" class="owl-carousel">
+                        <a href="http://aikorea.org/awesome-rl/">
+                            <div class="item">
+                                <img class="img-responsive img-rounded" src="static/img/awesome/awesome-rl.png" alt="">
+                            </div>
+                        </a>
+                        <a href="http://jiwonkim.org/awesome-rnn/">
+                            <div class="item">
+                                <img class="img-responsive img-rounded" src="static/img/awesome/awesome-rnn.png" alt="">
+                            </div>
+                        </a>
+                        <a href="http://jiwonkim.org/awesome-random-forest/#">
+                            <div class="item">
+                                <img class="img-responsive img-rounded" src="static/img/awesome/awesome-rf.png" alt="">
+                            </div>
+                        </a>
+                        <a href="http://jiwonkim.org/awesome-deep-vision/">
+                            <div class="item">
+                                <img class="img-responsive img-rounded" src="static/img/awesome/awesome-dv.png" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-6 wow fadeInRightBig"  data-animation-delay="200">
+                    <h3 class="section-heading">Awesome-x</h3>
+                    <div class="sub-title lead3">We are maintaining some Awesome lists.</div>
+                    <div class="lead">
+                        lorem ipsum
+                    </div>
+                    <p><a class="btn btn-embossed btn-primary" href="/blog/awesome/" role="button">View Details</a>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div>
+
+    <hr style="margin: 0;">
+
+    <div class="content-section-a">
+        <div class="container">
+             <div class="row">
+                <div class="col-sm-6 pull-right wow fadeInRightBig">
+                    <img class="img-responsive " src="static/img/circle.png" alt="">
+                </div>
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">
+                    <h3 class="section-heading">Reinforcement Learning</h3>
+                    <p class="lead">
+                        We hack games.
+                    </p>
+                    <ul class="descp lead2">
+                        <li><i class="glyphicon glyphicon-signal"></i> Reliable and Secure Platform</li>
+                        <li><i class="glyphicon glyphicon-refresh"></i> Everything is perfectly orgainized for future</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr style="margin: 0;">
+
+    <div class="content-section-a">
+        <div class="container">
+             <div class="row">
+                <div class="col-sm-6 pull-left wow fadeInLeftBig">
+                    <img class="img-responsive " src="static/img/circle.png" alt="">
+                </div>
+                <div class="col-sm-6 wow fadeInRightBig"  data-animation-delay="200">
+                    <h3 class="section-heading">Machine Translation</h3>
+                    <p class="lead">
+                        We lower communication barriers.
+                    </p>
+                    <ul class="descp lead2">
+                        <li><i class="glyphicon glyphicon-signal"></i> Reliable and Secure Platform</li>
+                        <li><i class="glyphicon glyphicon-refresh"></i> Everything is perfectly orgainized for future</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Team -->
+    <div id="team" class="content-section-b">
+        <div class="container">
+            <div class="text-center wrap_title">
+                <h2>The Team</h2>
+                <p class="lead" style="margin-top:0">This is our dream team.</p>
+            </div>
+
+            <!-- row 1 -->
+            <div class="row">
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/xhark.jpg">
+                    <div class="box-ct">
+                        <h3>xhark</h3>
+                        <p>Lorem ipsum dolor sit</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/gyunt.png">
+                    <div class="box-ct">
+                        <h3>gyunt</h3>
+                        <p>Lorem ipsum dolor sit</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/juyong.jpg">
+                    <div class="box-ct">
+                        <h3>juyong</h3>
+                        <p>Lorem ipsum dolor sit</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/kjw0612.jpg">
+                    <div class="box-ct">
+                        <h3>kjw0612</h3>
+                        <p>Lorem ipsum dolor sit</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- row 2 -->
+            <div class="row">
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/carpedm20.png">
+                    <div class="box-ct">
+                        <h3>carpedm20</h3>
+                        <p>ML</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/hshyunsookim.jpg">
+                    <div class="box-ct">
+                        <h3>hshyunsookim</h3>
+                        <p>ML</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/e9t.jpg">
+                    <div class="box-ct">
+                        <h3>e9t</h3>
+                        <p>ML</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <div class="box-icon"><i class="fa fa-desktop fa-4x "></i></div>
+                    <div class="box-ct">
+                        <h3>deruci</h3>
+                        <p>ML</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- row 3 -->
+            <div class="row">
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/jonghyuk.jpg">
+                    <div class="box-ct">
+                        <h3>jonghyuk</h3>
+                        <p>ML</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 block wow bounceIn text-center">
+                    <img class="teammate" src="static/img/team/myungsub.jpg">
+                    <div class="box-ct">
+                        <h3>myungsub</h3>
+                        <p>ML</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div id="downloadlink" class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+                <h2>Download Free</h2>
+                <p class="lead" style="margin-top:0">Pay with a Tweet</p>
+                <p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p>
+             </div>
+            </div>
+        </div>
+    </div>
+    -->
+
+    <!-- Contact -->
+    <!--
+    <div id="contact" class="content-section-a">
+        <div class="container">
+            <div class="row">
+
+            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+                <h2>Contact Us</h2>
+                <p class="lead" style="margin-top:0">Feel free to reach out.</p>
+            </div>
+
+            <form role="form" action="" method="post" >
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="InputName">Your Name</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputEmail">Your Email</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputMessage">Message</label>
+                        <div class="input-group">
+                            <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
+                        </div>
+                    </div>
+
+                    <input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    -->
+
+    <footer class="footer-banner">
+      <div class="container">
+        <p>All contents &copy; 2015 Team AI Korea.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="static/js/jquery-1.10.2.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/owl.carousel.js"></script>
+    <script src="static/js/script.js"></script>
+    <!-- StikyMenu -->
+    <script src="static/js/stickUp.min.js"></script>
+    <script type="text/javascript">
+      jQuery(function($) {
+        $(document).ready( function() {
+          $('.navbar-default').stickUp();
+        });
+      });
+
+    </script>
+    <!-- Smoothscroll -->
+    <script type="text/javascript" src="static/js/jquery.corner.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script>
+     new WOW().init();
+    </script>
+    <script src="static/js/classie.js"></script>
+    <script src="static/js/uiMorphingButton_inflow.js"></script>
+    <!-- Magnific Popup core JS file -->
+    <script src="static/js/jquery.magnific-popup.js"></script>
+</body>
+</html>
