@@ -140,20 +140,25 @@ $$ o\_t = softmax ( V s\_t ) $$
 
 각 변수들의 차원을 써보면 이해하는데 도움이 많이 된다. 단어장의 크기를 *C = 8000* 으로 잡고, hidden layer의 사이즈를 *H = 100* 으로 정해 보자. Hidden layer의 사이즈는 네트워크의 "메모리"라고 생각할 수도 있다. H를 키운다면 더 복잡한 패턴을 학습할 수 있겠지만, 그만큼 계산량이 많아질 것이다. 정해진 변수들로 차원을 써보면 다음과 같다.
 
-$$ x\_t \in \mathbb{R}^{8000} $$
-$$ o\_t \in \mathbb{R}^{8000} $$
-$$ s\_t \in \mathbb{R}^{100} $$
-$$ U \in \mathbb{R}^{100 \times 8000} $$
-$$ V \in \mathbb{R}^{8000 \times 100} $$
-$$ W \in \mathbb{R}^{100 \times 100} $$
+\\( x\_t \in \mathbb{R}^{8000} \\)
 
-U, V, W는 데이터로부터 학습하고자 하는 네트워크의 파라미터들이다. 따라서 학습해야 하는 파라미터 수는 총 $2HC+H^2$ 개이다. *C = 8000, H = 100* 인 경우에는 1,610,000 개가 된다. 위 정보를 통해 모델의 bottleneck도 판단할 수 있다.  $x\_t$가 one-hot 벡터이기 때문에, U와 곱하는 것은 결국 U의 column을 하나 선택하는 것과 마찬가지라 일일히 행렬곱을 계산할 필요가 없다. 따라서, 가장 큰 행렬곱은 $Vs_t$이 된다. 이것이 우리가 단어장의 크기를 가능한 한 줄여야 하는 이유가 된다.
+\\( o\_t \in \mathbb{R}^{8000} \\)
+
+\\( s\_t \in \mathbb{R}^{100} \\)
+
+\\( U \in \mathbb{R}^{100 \times 8000} \\)
+
+\\( V \in \mathbb{R}^{8000 \times 100} \\)
+
+\\( W \in \mathbb{R}^{100 \times 100} \\)
+
+U, V, W는 데이터로부터 학습하고자 하는 네트워크의 파라미터들이다. 따라서 학습해야 하는 파라미터 수는 총 \\( 2HC+H^2 \\) 개이다. *C = 8000, H = 100* 인 경우에는 1,610,000 개가 된다. 위 정보를 통해 모델의 bottleneck도 판단할 수 있다.  \\( x\_t \\)가 one-hot 벡터이기 때문에, U와 곱하는 것은 결국 U의 column을 하나 선택하는 것과 마찬가지라 일일히 행렬곱을 계산할 필요가 없다. 따라서, 가장 큰 행렬곱은 \\( Vs_t \\)이 된다. 이것이 우리가 단어장의 크기를 가능한 한 줄여야 하는 이유가 된다.
 
 사전 정보는 다 배웠으니, 실전 코딩으로 들어가 보자.
 
 ### 초기값 설정
 
-먼저 RNN 클래스에서 파라미터들의 초기값을 정해주는 것으로 시작한다. 나중에 Theano 버젼도 구현할 것이기 때문에, 이 클래스를 `RNNNumpy`라고 부르자. 파라미터 U, V, W를 초기화하는 것이 약간 까다롭다. 단순히 전부 0으로 초기화한다면, 모든 layer에서 동일한 (대칭적인) 계산이 이뤄질 것이다. 따라서 랜덤으로 초기화해 주어야 하고, 올바른 초기화 방법은 학습 결과에 매우 큰 영향을 미치기 때문에 많이 연구가 진행되었다. 그 결과, 가장 좋은 초기화 방법은 activation 함수 (우리의 경우는 *tanh* )에 의존하고, 한 [연구 결과](http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf)에서는 파라미터 값들을 *n* 이 이전 layer에서부터 들어오는 연결 수라고 할 때 $[-{1}\over{sqrt{n}}, {1}\over{sqrt{n}}]$ 구간에서 랜덤으로 정하는 것이 좋다고 한다. 이정도면 너무 쓸데없이 복잡해 보이기도 하지만, 너무 걱정할 필요는 없다. 보통은 작은 랜덤 값들로 초기화 시켜주면 적당히 잘 동작한다.
+먼저 RNN 클래스에서 파라미터들의 초기값을 정해주는 것으로 시작한다. 나중에 Theano 버젼도 구현할 것이기 때문에, 이 클래스를 `RNNNumpy`라고 부르자. 파라미터 U, V, W를 초기화하는 것이 약간 까다롭다. 단순히 전부 0으로 초기화한다면, 모든 layer에서 동일한 (대칭적인) 계산이 이뤄질 것이다. 따라서 랜덤으로 초기화해 주어야 하고, 올바른 초기화 방법은 학습 결과에 매우 큰 영향을 미치기 때문에 많이 연구가 진행되었다. 그 결과, 가장 좋은 초기화 방법은 activation 함수 (우리의 경우는 *tanh* )에 의존하고, 한 [연구 결과](http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf)에서는 파라미터 값들을 *n* 이 이전 layer에서부터 들어오는 연결 수라고 할 때 \\( -\frac{1}{sqrt{n}}, \frac{1}{sqrt{n}}] \\) 구간에서 랜덤으로 정하는 것이 좋다고 한다. 이정도면 너무 쓸데없이 복잡해 보이기도 하지만, 너무 걱정할 필요는 없다. 보통은 작은 랜덤 값들로 초기화 시켜주면 적당히 잘 동작한다.
 
 ```python
 class RNNNumpy:
@@ -194,7 +199,7 @@ def forward_propagation(self, x):
 RNNNumpy.forward_propagation = forward_propagation
 ```
 
-계산된 출력값 외에 hidden state도 같이 리턴해 준다. 이 값들은 나중에 gradient를 계산할 때 사용되기 때문에, 중복되는 계산을 수행하지 않기 위해 미리 저장해 두기 위함이다. 각 $o\_t$는 각 단어의 확률 벡터인데, 모델을 평가하거나 할 때는 가장 확률값이 높은 단어가 무엇인지만 알면 되는 경우가 있다. 이를 찾는 함수를 `predict`라 하고, 아래 구현하였다.
+계산된 출력값 외에 hidden state도 같이 리턴해 준다. 이 값들은 나중에 gradient를 계산할 때 사용되기 때문에, 중복되는 계산을 수행하지 않기 위해 미리 저장해 두기 위함이다. 각 \\( o\_t \\)는 각 단어의 확률 벡터인데, 모델을 평가하거나 할 때는 가장 확률값이 높은 단어가 무엇인지만 알면 되는 경우가 있다. 이를 찾는 함수를 `predict`라 하고, 아래 구현하였다.
 
 ```python
 def predict(self, x):
@@ -275,7 +280,7 @@ RNNNumpy.calculate_total_loss = calculate_total_loss
 RNNNumpy.calculate_loss = calculate_loss
 ```
 
-코드에서 한발짝 물러나서, 랜덤 예측의 경우에는 loss가 어떻게 되어야 할 지 생각해보자. 베이스라인이 무엇인지 알 수 있고, 구현이 제대로 되었는지 확인해볼 수 있다. 단어장에 *C* 개의 단어가 있으므로, 각 단어는 (평균적으로) *1/C* 의 확률로 예측되어야 하고, 이 때의 loss는 $ L = -\frac{1}{N} N \log{\frac{1}{C}} = \log{C} $ 이 될 것이다.
+코드에서 한발짝 물러나서, 랜덤 예측의 경우에는 loss가 어떻게 되어야 할 지 생각해보자. 베이스라인이 무엇인지 알 수 있고, 구현이 제대로 되었는지 확인해볼 수 있다. 단어장에 *C* 개의 단어가 있으므로, 각 단어는 (평균적으로) *1/C* 의 확률로 예측되어야 하고, 이 때의 loss는 \\( L = -\frac{1}{N} N \log{\frac{1}{C}} = \log{C} \\) 이 될 것이다.
 
 ```python
 # Limit to 1000 examples to save time
@@ -292,9 +297,9 @@ Actual loss: 8.987440
 
 ### SGD와 Backpropagation Through Time (BPTT)를 이용하여 RNN 학습하기
 
-우리 목적은 학습 데이터에 대해서 loss를 최소화하는 파라미터 U, V, W를 찾는 것임을 기억하자. 가장 보편적으로 사용되는 방법은 SGD (Stochastic Gradient Descent)이다. 기본 아이디어는 간단한데, 모든 학습 데이터에 대해 반복적으로 학습하되, 매 iteration에서 에러를 줄이는 쪽으로 파라미터 값들을 조금씩 움직이는 것이다. 에러를 줄이는 방향은 loss의 gradient로 주어진다: $ \frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W} $. SGD에서는 *learning rate* 도 필요한데, 이는 매 iteration에서 얼만큼 큰 스텝만큼 파라미터 값 업데이트가 이루어질지 정해준다. SGD는 신경망 구조 외의 다른 많은 기계 학습 알고리즘들에서도 사용하는 최적화 기법이기 때문에, SGD를 잘 활용하는 법에 대한 연구 결과 및 트릭들도 많이 있다 (batch로 활용하는 법, learning rate 변화법 등). 아이디어는 간단하지만, 효율적으로 SGD를 구현하는 것은 복잡해질 수 있다. SGD에 대해 더 자세히 알고자 한다면 [여기](http://cs231n.github.io/optimization-1/)를 참고하기 바란다. 워낙에 유명한 알고리즘이고 웹 상의 여기저기에 좋은 튜토리얼들이 많기 때문에, 본 튜토리얼에서 SGD의 기본 개념에 대한 것을 자세히 다루지는 않을 것이다. 아래 구현에서는 최적화에 대한 사전 지식이 없더라도 충분히 이해할 수 있는 간단한 버전의 SGD를 만들 것이다.
+우리 목적은 학습 데이터에 대해서 loss를 최소화하는 파라미터 U, V, W를 찾는 것임을 기억하자. 가장 보편적으로 사용되는 방법은 SGD (Stochastic Gradient Descent)이다. 기본 아이디어는 간단한데, 모든 학습 데이터에 대해 반복적으로 학습하되, 매 iteration에서 에러를 줄이는 쪽으로 파라미터 값들을 조금씩 움직이는 것이다. 에러를 줄이는 방향은 loss의 gradient로 주어진다: \\( \frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W} \\). SGD에서는 *learning rate* 도 필요한데, 이는 매 iteration에서 얼만큼 큰 스텝만큼 파라미터 값 업데이트가 이루어질지 정해준다. SGD는 신경망 구조 외의 다른 많은 기계 학습 알고리즘들에서도 사용하는 최적화 기법이기 때문에, SGD를 잘 활용하는 법에 대한 연구 결과 및 트릭들도 많이 있다 (batch로 활용하는 법, learning rate 변화법 등). 아이디어는 간단하지만, 효율적으로 SGD를 구현하는 것은 복잡해질 수 있다. SGD에 대해 더 자세히 알고자 한다면 [여기](http://cs231n.github.io/optimization-1/)를 참고하기 바란다. 워낙에 유명한 알고리즘이고 웹 상의 여기저기에 좋은 튜토리얼들이 많기 때문에, 본 튜토리얼에서 SGD의 기본 개념에 대한 것을 자세히 다루지는 않을 것이다. 아래 구현에서는 최적화에 대한 사전 지식이 없더라도 충분히 이해할 수 있는 간단한 버전의 SGD를 만들 것이다.
 
-그렇다면 앞에서 언급한 gradient는 어떻게 계산될까? [기존의 신경망 구조](http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch/)에서는 backpropagation 알고리즘을 이용한다. RNN에서는 이를 살짝 변형시킨 버전인 *Backpropagation Through Time (BPTT)* 을 사용하는데, 그 이유는 각 파라미터들이 네트워크의 매 시간 스텝마다 공유되기 때문이다. 즉, 각 시간 스텝의 출력단에서의 gradient는 현재 시간 스텝에서의 계산에만 의존하는 것이 아니라 이전 시간 스텝에도 의존한다. 미적분에 대한 지식이 있다면 이 알고리즘은 결국 chain rule을 적용하는 것뿐이다. 본 튜토리얼의 다음 파트는 전부 BPTT에 대한 내용일 것이기 때문에, 여기서 자세한 유도 과정을 보이진 않겠다. Backpropagation에 대한 내용을 자세히 복습하고 싶다면 [여기]와 [이 포스트]를 확인하기 바란다. 일단 당장은 BPTT를 black box 함수처럼 생각하도록 하자. 입력으로는 학습 데이터 샘플 (*x, y*)을 받고, 출력으로 gradient들 - $ \frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W} $ - 을 내놓는다.
+그렇다면 앞에서 언급한 gradient는 어떻게 계산될까? [기존의 신경망 구조](http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch/)에서는 backpropagation 알고리즘을 이용한다. RNN에서는 이를 살짝 변형시킨 버전인 *Backpropagation Through Time (BPTT)* 을 사용하는데, 그 이유는 각 파라미터들이 네트워크의 매 시간 스텝마다 공유되기 때문이다. 즉, 각 시간 스텝의 출력단에서의 gradient는 현재 시간 스텝에서의 계산에만 의존하는 것이 아니라 이전 시간 스텝에도 의존한다. 미적분에 대한 지식이 있다면 이 알고리즘은 결국 chain rule을 적용하는 것뿐이다. 본 튜토리얼의 다음 파트는 전부 BPTT에 대한 내용일 것이기 때문에, 여기서 자세한 유도 과정을 보이진 않겠다. Backpropagation에 대한 내용을 자세히 복습하고 싶다면 [여기]와 [이 포스트]를 확인하기 바란다. 일단 당장은 BPTT를 black box 함수처럼 생각하도록 하자. 입력으로는 학습 데이터 샘플 (*x, y*)을 받고, 출력으로 gradient들 - \\( \frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W} \\) - 을 내놓는다.
 
 
 ```python
