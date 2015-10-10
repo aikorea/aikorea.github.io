@@ -10,3 +10,7 @@ layout: default
     {{ content }}
   </div>
 </article>
+
+{% if page.mathjax %}
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+{% endif %}
