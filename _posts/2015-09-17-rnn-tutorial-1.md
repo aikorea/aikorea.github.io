@@ -11,8 +11,8 @@ title: Recurrent Neural Network (RNN) Tutorial - Part 1
 RNN은 다양한 자연어처리(NLP) 문제에 대해 뛰어난 성능을 보이고 있는 인기있는 모델이다. 하지만 최근의 인기에 비해 실제로 RNN이 어떻게 동작하는지, 어떻게 구현해야 하는지에 대해 쉽게 설명해놓은 자료는 상당히 부족한 편이다. 따라서 이 튜토리얼에서는 아래 내용을 하나하나 자세히 다루고자 한다.
 
 1. Introduction to RNNs (현재 포스트)
-2. Python과 [Theano](http://deeplearning.net/software/theano/)를 이용한 RNN 구현 방법
-3. Backpropagation Through Time (BPTT) 알고리즘과 vanishing gradient 문제 이해하기
+2. [Python과 Theano를 이용한 RNN 구현 방법](http://aikorea.org/blog/rnn-tutorial-2/)
+3. [Backpropagation Through Time (BPTT) 알고리즘과 vanishing gradient 문제 이해하기](http://aikorea.org/blog/rnn-tutorial-3/)
 4. RNN부터 LSTM 네트워크까지
 
 본 튜토리얼의 일환으로 RNN 기반의 언어 모델을 구현할 것이다. 언어 모델은 두 가지로 응용될 수 있는데, 첫째로는 실제 세상에서 어떤 임의의 문장이 존재할 확률이 어느 정도인지에 대한 스코어를 매길 수 있다는 점이다. 이는 문장이 문법적으로나 의미적으로 어느 정도 올바른지 측정할 수 있도록 해주고, 보통 자동 번역 시스템의 일부로 활용된다. 두 번째는 새로운 문장의 생성이다 (이쪽이 훨씬 더 재밌는 응용 분야라고 생각). 셰익스피어의 소설에 언어 모델을 학습시키면 셰익스피어가 쓴 글과 비슷한 글을 네트워크가 자동으로 생성해 낸다. RNN 기반의 character-level 언어 모델이 생성해낼 수 있는 여러 가지 재밌는 데모를 Andrej Karpathy의 [블로그 포스트](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)에서 확인할 수 있다.
