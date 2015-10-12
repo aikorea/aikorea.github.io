@@ -6,11 +6,10 @@ date:   2015-10-09
 mathjax: true
 ---
 
-[WildML](http://www.wildml.com/)의 두 번째 RNN 튜토리얼입니다. 파이썬(프로그래밍 언어)으로 NumPy(매트랩처럼 행렬 을 다룰 때 편한 파이썬 기본 패키지)와 Theano(파이썬 기반 딥러닝 라이브러리)를 활용하여 실제로 RNN 모델을 처음부터 구현해보는 내용으로 코드도 전부 올라와 있어서 도움이 많이 될 것 같습니다!
+> [WildML](http://www.wildml.com/)의 두 번째 RNN 튜토리얼입니다. 파이썬(프로그래밍 언어)으로 NumPy(매트랩처럼 행렬 을 다룰 때 편한 파이썬 기본 패키지)와 Theano(파이썬 기반 딥러닝 라이브러리)를 활용하여 실제로 RNN 모델을 처음부터 구현해보는 내용으로 코드도 전부 올라와 있어서 도움이 많이 될 것 같습니다!
+>
+> [원문(영어)으로 된 버전](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-2-implementing-a-language-model-rnn-with-python-numpy-and-theano/)을 거의 그대로 옮겨왔습니다. 번역에 이상한 점을 발견하셨거나 질문이 있으시다면 댓글로 달아주세요.
 
-[원문(영어)으로 된 버전](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-2-implementing-a-language-model-rnn-with-python-numpy-and-theano/)을 거의 그대로 옮겨왔습니다. 번역에 이상한 점을 발견하셨거나 질문이 있으시다면 댓글로 달아주세요.
-
----
 
 두 번째 RNN 튜토리얼입니다. Part 1은 [여기](http://aikorea.org/blog/rnn-tutorial-1/)로
 
@@ -73,24 +72,24 @@ print "Parsed %d sentences." % (len(sentences))
 
 # Tokenize the sentences into words
 tokenized_sentences = [nltk.word_tokenize(sent) for sent in sentences]
- 
+
 # Count the word frequencies
 word_freq = nltk.FreqDist(itertools.chain(*tokenized_sentences))
 print "Found %d unique words tokens." % len(word_freq.items())
- 
+
 # Get the most common words and build index_to_word and word_to_index vectors
 vocab = word_freq.most_common(vocabulary_size-1)
 index_to_word = [x[0] for x in vocab]
 index_to_word.append(unknown_token)
 word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
- 
+
 print "Using vocabulary size %d." % vocabulary_size
 print "The least frequent word in our vocabulary is '%s' and appeared %d times." % (vocab[-1][0], vocab[-1][1])
- 
+
 # Replace all words not in our vocabulary with the unknown token
 for i, sent in enumerate(tokenized_sentences):
     tokenized_sentences[i] = [w if w in word_to_index else unknown_token for w in sent]
- 
+
 print "\nExample sentence: '%s'" % sentences[0]
 print "\nExample sentence after Pre-processing: '%s'" % tokenized_sentences[0]
 ```
@@ -101,9 +100,9 @@ Parsed 79170 sentences.
 Found 65751 unique words tokens.
 Using vocabulary size 8000.
 The least frequent word in our vocabulary is 'devoted' and appeared 10 times.
- 
+
 Example sentence: 'SENTENCE_START i joined a new league this year and they have different scoring rules than i'm used to. SENTENCE_END'
- 
+
 Example sentence after Pre-processing: '[u'SENTENCE_START', u'i', u'joined', u'a', u'new', u'league', u'this', u'year', u'and', u'they', u'have', u'different', u'scoring', u'rules', u'than', u'i', u"'m", u'used', u'to', u'.', u'SENTENCE_END']'
 ```
 
@@ -119,7 +118,7 @@ y_train = np.asarray([[word_to_index[w] for w in sent[1:]] for sent in tokenized
 x:
 SENTENCE_START what are n't you understanding about this ? !
 [0, 51, 27, 16, 10, 856, 53, 25, 34, 69]
- 
+
 y:
 what are n't you understanding about this ? ! SENTENCE_END
 [51, 27, 16, 10, 856, 53, 25, 34, 69, 1]
@@ -195,7 +194,7 @@ def forward_propagation(self, x):
         s[t] = np.tanh(self.U[:,x[t]] + self.W.dot(s[t-1]))
         o[t] = softmax(self.V.dot(s[t]))
     return [o, s]
- 
+
 RNNNumpy.forward_propagation = forward_propagation
 ```
 
@@ -206,7 +205,7 @@ def predict(self, x):
     # Perform forward propagation and return index of the highest score
     o, s = self.forward_propagation(x)
     return np.argmax(o, axis=1)
- 
+
 RNNNumpy.predict = predict
 ```
 
@@ -228,7 +227,7 @@ print o
    0.00012451]
  [ 0.00012387  0.0001252   0.00012474 ...,  0.00012559  0.00012588
    0.00012551]
- ..., 
+ ...,
  [ 0.00012414  0.00012455  0.0001252  ...,  0.00012487  0.00012494
    0.0001263 ]
  [ 0.0001252   0.00012393  0.00012509 ...,  0.00012407  0.00012578
@@ -270,12 +269,12 @@ def calculate_total_loss(self, x, y):
         # Add to the loss based on how off we were
         L += -1 * np.sum(np.log(correct_word_predictions))
     return L
- 
+
 def calculate_loss(self, x, y):
     # Divide the total loss by the number of training examples
     N = np.sum((len(y_i) for y_i in y))
     return self.calculate_total_loss(x,y)/N
- 
+
 RNNNumpy.calculate_total_loss = calculate_total_loss
 RNNNumpy.calculate_loss = calculate_loss
 ```
@@ -321,12 +320,12 @@ def bptt(self, x, y):
         # Backpropagation through time (for at most self.bptt_truncate steps)
         for bptt_step in np.arange(max(0, t-self.bptt_truncate), t+1)[::-1]:
             # print "Backpropagation step t=%d bptt step=%d " % (t, bptt_step)
-            dLdW += np.outer(delta_t, s[bptt_step-1])              
+            dLdW += np.outer(delta_t, s[bptt_step-1])
             dLdU[:,x[bptt_step]] += delta_t
             # Update delta for next step
             delta_t = self.W.T.dot(delta_t) * (1 - s[bptt_step-1] ** 2)
     return [dLdU, dLdV, dLdW]
- 
+
 RNNNumpy.bptt = bptt
 ```
 
@@ -375,12 +374,12 @@ def gradient_check(self, x, y, h=0.001, error_threshold=0.01):
                 print "Estimated_gradient: %f" % estimated_gradient
                 print "Backpropagation gradient: %f" % backprop_gradient
                 print "Relative Error: %f" % relative_error
-                return 
+                return
             it.iternext()
         print "Gradient check for parameter %s passed." % (pname)
- 
+
 RNNNumpy.gradient_check = gradient_check
- 
+
 # To avoid performing millions of expensive calculations we use a smaller vocabulary size for checking.
 grad_check_vocab_size = 100
 np.random.seed(10)
@@ -402,7 +401,7 @@ def numpy_sdg_step(self, x, y, learning_rate):
     self.U -= learning_rate * dLdU
     self.V -= learning_rate * dLdV
     self.W -= learning_rate * dLdW
- 
+
 RNNNumpy.sgd_step = numpy_sdg_step
 ```
 
@@ -427,7 +426,7 @@ def train_with_sgd(model, X_train, y_train, learning_rate=0.005, nepoch=100, eva
             print "%s: Loss after num_examples_seen=%d epoch=%d: %f" % (time, num_examples_seen, epoch, loss)
             # Adjust the learning rate if loss increases
             if (len(losses) > 1 and losses[-1][1] > losses[-2][1]):
-                learning_rate = learning_rate * 0.5  
+                learning_rate = learning_rate * 0.5
                 print "Setting learning rate to %f" % learning_rate
             sys.stdout.flush()
         # For each training example...
@@ -488,7 +487,7 @@ model = RNNTheano(vocabulary_size)
 
 ```python
 from utils import load_model_parameters_theano, save_model_parameters_theano
- 
+
 model = RNNTheano(vocabulary_size, hidden_dim=50)
 # losses = train_with_sgd(model, X_train, y_train, nepoch=50)
 # save_model_parameters_theano('./data/trained-model-theano.npz', model)
@@ -515,10 +514,10 @@ def generate_sentence(model):
         new_sentence.append(sampled_word)
     sentence_str = [index_to_word[x] for x in new_sentence[1:-1]]
     return sentence_str
- 
+
 num_sentences = 10
 senten_min_length = 7
- 
+
 for i in range(num_sentences):
     sent = []
     # We want long sentences, not sentences with one or two words

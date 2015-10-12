@@ -3,9 +3,7 @@ layout: post
 title: Recurrent Neural Network (RNN) Tutorial - Part 1
 ---
 
-[WildML](http://www.wildml.com/)이라는 블로그를 발견했는데 [RNN에 관련된 좋은 튜토리얼(영어)](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/)이 있어서 번역해 보았습니다. 중간중간에 애매한 용어들은 그냥 영어로 남겨놓았는데, 번역이 이상한 부분을 발견하셨다던지 질문이 있으시면 댓글로 알려주세요!
-
----
+> [WildML](http://www.wildml.com/)이라는 블로그에 [RNN에 관련된 좋은 튜토리얼(영어)](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/)이 있어서 번역해 보았습니다. 중간중간에 애매한 용어들은 그냥 영어로 남겨놓았는데, 번역이 이상한 부분을 발견하셨거나 질문이 있으시면 댓글로 알려주세요!
 
 
 RNN은 다양한 자연어처리(NLP) 문제에 대해 뛰어난 성능을 보이고 있는 인기있는 모델이다. 하지만 최근의 인기에 비해 실제로 RNN이 어떻게 동작하는지, 어떻게 구현해야 하는지에 대해 쉽게 설명해놓은 자료는 상당히 부족한 편이다. 따라서 이 튜토리얼에서는 아래 내용을 하나하나 자세히 다루고자 한다.

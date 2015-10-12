@@ -6,13 +6,11 @@ date:   2015-10-10
 mathjax: true
 ---
 
-[WildML](http://www.wildml.com/)의 세 번째 RNN 튜토리얼입니다. RNN 모델을 학습하는데 사용되는 핵심 알고리즘은 Backpropagation Through Time (BPTT)와, 기본 RNN 모델에서 발생하는 vanishing gradient 문제에 대해 조금 더 심도있게 다뤘습니다.
+> [WildML](http://www.wildml.com/)의 세 번째 RNN 튜토리얼입니다. RNN 모델을 학습하는데 사용되는 핵심 알고리즘은 Backpropagation Through Time (BPTT)와, 기본 RNN 모델에서 발생하는 vanishing gradient 문제에 대해 조금 더 심도있게 다뤘습니다.
+>
+> 이전 번역 포스트들과 마찬가지로 [영문 버전](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/)을 거의 그대로 옮겨왔고, 번역에 이상한 점을 발견하셨거나 질문이 있으시다면 댓글로 달아주세요!
 
-이전 번역 포스트들과 마찬가지로 [영문 버전](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/)을 거의 그대로 옮겨왔고, 번역에 이상한 점을 발견하셨거나 질문이 있으시다면 댓글로 달아주세요!
-
----
-
-[Recurrent Neural Network 튜토리얼](http://aikorea.org/blog/rnn-tutorial-1/)의 세 번째 파트입니다. 
+[Recurrent Neural Network 튜토리얼](http://aikorea.org/blog/rnn-tutorial-1/)의 세 번째 파트입니다.
 
 [이전 파트](http://aikorea.org/blog/rnn-tutorial-2/)에서는 RNN을 아예 처음부터 구현해 보았지만, BPTT 알고리즘이 어떻게 gradient를 계산하는지에 대해 깊숙히 들어가지는 않았었다. 이번 파트에서는 BPTT가 무엇인지, 기존의 backpropagation 알고리즘과의 차이점이 어떤게 있는지 살펴볼 것이다. 그리고 자연어처리(와 여러 다른) 분야에서 현재 가장 인기있는 LSTM과 GRU 구조를 필요하게 한 *vanishing gradient 문제* 에 대해 이해해볼 것이다. Vanishing gradient 문제는 [1991년에 Sepp Hochreiter에 의해 발견](http://people.idsia.ch/~juergen/fundamentaldeeplearningproblem.html)되었는데, 최근에 깊은(deep) 구조들이 많이 사용되면서 최근에도 주목받고 있다.
 
@@ -22,16 +20,22 @@ mathjax: true
 
 RNN의 기본 계산 수식을 다시 적어보자. 문자명이 \\( o \\)에서 \\( \hat{y\_t} \\)으로 살짝 바뀌었는데, 참고하는 이전 문헌들과 맞추기 위해서이다.
 
-$$ s\_t = \tanh ( U x\_t + W s\_{t-1} ) $$
-$$ \hat{y\_t} = softmax ( V s\_t ) $$
+$$
+\begin{align}
+s\_t & = \tanh ( U x\_t + W s\_{t-1} ) \\\\
+\hat{y\_t} & = softmax ( V s\_t ) \\\\
+\end{align}
+$$
 
 Loss (에러)도 이전에 cross entropy로 정의했었고, 그 식은 아래와 같다.
 
- \\( E(y\_t, \hat{y\_t}) = -y\_t \log{\hat{y\_t}} \\) 
-
- \\( \;\; E(y, \hat{y}) = -\sum_{t}{E\_t (y\_t, \hat{y\_t})} \\)
-
- \\( \qquad \qquad= -\sum_{t}{-y\_t \log{\hat{y\_t}}} \\)
+$$
+\begin{align}
+E(y\_t, \hat{y\_t}) & = -y\_t \log{\hat{y\_t}} \\\\
+E(y, \hat{y}) & = -\sum_{t}{E\_t (y\_t, \hat{y\_t})} \\\\
+& = -\sum\_t -y\_t \log \hat{y\_t} \\\\
+\end{align}
+$$
 
 여기서 \\( y\_t \\)는 시간 스텝 t에서 실제 단어이고, \\( \hat{y\_t} \\)는 우리의 예측값이다. 보통 전체 시퀀스(문장)를 하나의 학습 데이터(샘플)로 생각하고, 총 에러는 매 시간 스텝(단어)마다의 에러의 총 합으로 취한다.
 
@@ -41,22 +45,23 @@ Loss (에러)도 이전에 cross entropy로 정의했었고, 그 식은 아래�
 
 이 gradient들을 계산하기 위해선 미분의 chain rule을 사용한다. 에러에서부터 거꾸로 된 방향으로 계산하는 것이 결국 [backpropagation 알고리즘](http://colah.github.io/posts/2015-08-Backprop/)이 된다. 본 튜토리얼의 나머지 부분에서는 예시로 \\( E\_3 \\)을 기준으로 설명할 것이다.
 
-\\( \frac{\partial E\_3}{\partial V} = \frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial V} \\)
-
-
-\\( \qquad = \frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial z\_3} \frac{\partial z\_3}{\partial V} \\)
-
-\\( \qquad = (\hat{y\_3} - y\_3) \otimes s\_3 \\)
+$$
+\begin{align}
+\frac{\partial E\_3}{\partial V} & = \frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial V} \\\\
+& = \frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial z\_3} \frac{\partial z\_3}{\partial V} \\\\
+& = (\hat{y\_3} - y\_3) \otimes s\_3 \\\\
+\end{align}
+$$
 
 위 식에서, \\( z\_3 = Vs\_3 \\)이고, \\( \otimes \\)는 두 벡터의 외적이다. 위의 수식 전개는 몇 가지 스텝을 건너뛴 것이기 때문에, 바로 이해가 안 된다면 직접 미분 계산을 해보면 좋은 연습이 될 것이다. 핵심 포인트는 \\( \frac{\partial E\_3}{\partial V} \\)가 현재 시간 스텝의 \\( \hat{y\_3}, y\_3, s\_3 \\)에만 의존한다는 점이다. 이 세 값을 갖고 있다면 V에 대한 gradient를 계산하는 것은 단순한 행렬곱이 된다.
 
 그러나, \\( \frac{\partial E\_3}{\partial W} \\)에 대해서는 (U에 대해서도) 상황이 조금 다르다. 이를 살펴보기 위해 위에서처럼 chain rule을 전개해 보았다.
 
-\\( \frac{\partial E\_3}{\partial W} = \frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial s\_3} \frac{\partial s\_3}{\partial W} \\)
+\\[ \frac{\partial E\_3}{\partial W} = \frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial s\_3} \frac{\partial s\_3}{\partial W} \\]
 
 여기서 \\( s\_t = \tanh ( U x\_t + W s\_{t-1} ) \\) 는 \\( s\_2 \\)에 의존하고, \\( s\_2 \\)는 W와 \\( s\_1 \\)에 의존해서 chain rule이 계속 이어진다. 따라서, W에 대한 미분을 하기 위해서는 \\( s\_2 \\)를 단순히 상수로 취급하면 안된다. 다시 chain rule을 적용한다면 아래 식을 얻을 수 있다.
 
-\\( \frac{\partial E\_3}{\partial W} = \sum_{k=0}^{3}{\frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial s\_3} \frac{\partial s\_3}{\partial s\_k} \frac{\partial s\_k}{\partial W}} \\)
+\\[ \frac{\partial E\_3}{\partial W} = \sum_{k=0}^{3}{\frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial s\_3} \frac{\partial s\_3}{\partial s\_k} \frac{\partial s\_k}{\partial W}} \\]
 
 각 시간 스텝이 gradient에 기여하는 것을 전부 더해준다. 즉, W는 우리가 현재 처리중인 출력 부분까지의 모든 시간 스텝에서 사용되기 때문에, \\( t=3 \\)부터 \\( t=0 \\)까지 gradient들을 전부 backpropage(역전파, 거꾸로 계산해주는 과정) 해 주어야 한다.
 
@@ -84,7 +89,7 @@ def bptt(self, x, y):
         for bptt_step in np.arange(max(0, t-self.bptt_truncate), t+1)[::-1]:
             # print "Backpropagation step t=%d bptt step=%d " % (t, bptt_step)
             # Add to gradients at each previous step
-            dLdW += np.outer(delta_t, s[bptt_step-1])              
+            dLdW += np.outer(delta_t, s[bptt_step-1])
             dLdU[:,x[bptt_step]] += delta_t
             # Update delta for next step dL/dz at t-1
             delta_t = self.W.T.dot(delta_t) * (1 - s[bptt_step-1] ** 2)
@@ -123,5 +128,3 @@ Gradient 계산을 보면, 자코비안 행렬 안의 값들이 크다면 activa
 <p align="right">
 <b>번역: 최명섭</b>
 </p>
-
-
