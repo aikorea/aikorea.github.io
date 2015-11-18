@@ -63,7 +63,7 @@ $$
 
 \\[ \frac{\partial E\_3}{\partial W} = \sum_{k=0}^{3}{\frac{\partial E\_3}{\partial \hat{y\_3}} \frac{\partial \hat{y\_3}}{\partial s\_3} \frac{\partial s\_3}{\partial s\_k} \frac{\partial s\_k}{\partial W}} \\]
 
-각 시간 스텝이 gradient에 기여하는 것을 전부 더해준다. 즉, W는 우리가 현재 처리중인 출력 부분까지의 모든 시간 스텝에서 사용되기 때문에, \\( t=3 \\)부터 \\( t=0 \\)까지 gradient들을 전부 backpropage(역전파, 거꾸로 계산해주는 과정) 해 주어야 한다.
+각 시간 스텝이 gradient에 기여하는 것을 전부 더해준다. 즉, W는 우리가 현재 처리중인 출력 부분까지의 모든 시간 스텝에서 사용되기 때문에, \\( t=3 \\)부터 \\( t=0 \\)까지 gradient들을 전부 backpropagate(역전파, 거꾸로 계산해주는 과정) 해 주어야 한다.
 
 ![rnn-unfolded-gradient](http://www.wildml.com/wp-content/uploads/2015/10/rnn-bptt-with-gradients.png)
 
