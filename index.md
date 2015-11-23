@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: main
 ---
 
 AI Korea는 인공지능을 좋아하는 사람들의 모임입니다.
