@@ -9,7 +9,7 @@ name: Team AI Korea
 description: We do Artificial Intelligence
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11665423_1666217963597948_855186853774907230_n.jpg?oh=a2def91ec69e5218fcd9927701cf1e4c&oe=56608FBB&__gda__=1453906691_502b104f2edb7f46ac87eb365c118bcc
+avatar: https://scontent.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11665423_1666217963597948_855186853774907230_n.jpg?oh=b2f0e7583a7299aa852c70f7a6b4f326&oe=56D736BB
 
 #
 # Flags below are optional
@@ -41,7 +41,7 @@ google_analytics: UA-67529920-1
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: 
+url:
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
