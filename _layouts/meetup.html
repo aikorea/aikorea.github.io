@@ -1,0 +1,146 @@
+<!doctype HTML>
+<!--Create upon the Flatfy Theme by [Andrea Galanti](http://www.andreagalanti.it)-->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="{{ site.name }}">
+    <meta name="author" content="{{ site.name }}">
+
+    <title>{{ site.name }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Google Web Font -->
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom CSS-->
+    <link href="static/css/general.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/style.css" rel="stylesheet">
+
+     <!-- Owl-Carousel -->
+    <link href="static/css/custom.css" rel="stylesheet">
+    <link href="static/css/owl.carousel.css" rel="stylesheet">
+    <link href="static/css/owl.theme.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/animate.css" rel="stylesheet">
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+
+    <script src="static/js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
+</head>
+
+<body id="home">
+
+
+
+
+  <!-- Preloader -->
+  <div id="preloader">
+      <div id="status"></div>
+  </div>
+
+  <!-- FullScreen -->
+  <div class="intro-header">
+      <div class="col-xs-12 text-center abcen1">
+          <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">{{ site.name }}</h1>
+          <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">{{ site.description }}</h3>
+          <div class="list-inline intro-social-buttons">
+          {% include svg-icons.html %}
+          </div>
+      </div>
+      <!-- /.container -->
+      <div class="col-xs-12 text-center abcen wow fadeIn">
+          <div class="button_down">
+              <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#about"> <img class="img_scroll" src="static/img/icon/circle.png" alt=""> </a>
+          </div>
+      </div>
+  </div>
+
+
+
+
+    <!-- Main -->
+    <div id="meetup-contents" class="content-section-b" style="border-top: 0">
+        <div class="container">
+
+            <div class="text-center wrap_title">
+                <h2>Deep Learning Korea Meetup</h2>
+                <p class="lead" style="margin-top:0">Our vision.</p>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 lead">
+                {{ content }}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 wow fadeInDown text-center">
+                <a href="https://www.facebook.com/awesomeai">
+              		<img class="rotate" src="static/img/icon/like.svg" alt="Generic placeholder image">
+                </a>
+                <h3>Follow Us</h3>
+                <p class="lead2">
+			            Artificial Intelligence in Korea (AI Korea) 페이스북 페이지에서 인공지능 관련 최신 소식을 받아보세요!
+		            </p>
+              </div><!-- /.col-lg-4 -->
+
+              <div class="col-sm-4 wow fadeInDown text-center">
+                <a href="https://www.facebook.com/groups/AIKoreaOpen/">
+			            <img  class="rotate" src="static/img/icon/laptop.svg" alt="Generic placeholder image">
+		            </a>
+                <h3>Join Us</h3>
+                  <p class="lead2"> AI Korea Open 페이스북 그룹에 가입하셔서 여러 인공지능 소식을 공유하고 참여해 보아요. 그룹 내의 여러 전문가 분들과 소통할 수 있는 열린 공간입니다. </p>
+              </div><!-- /.col-lg-4 -->
+
+              <div class="col-sm-4 wow fadeInDown text-center">
+                <a href="/blog/"><img  class="rotate" src="static/img/icon/clipboard.svg" alt="Generic placeholder image"></a>
+                <h3>Blog</h3>
+                <p class="lead2"> 인공지능 관련 여러 유용한 자료들 정리 및 해외 유명 자료를 번역해 두었습니다.</p>
+              </div><!-- /.col-lg-4 -->
+
+            </div><!-- /.row -->
+        </div>
+    </div>
+
+
+    <footer class="footer-banner">
+      <div class="container">
+        <p>All contents &copy; 2015 Team AI Korea.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="static/js/jquery-1.10.2.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/owl.carousel.js"></script>
+    <script src="static/js/script.js"></script>
+    <!-- StikyMenu -->
+    <script src="static/js/stickUp.min.js"></script>
+    <script type="text/javascript">
+      jQuery(function($) {
+        $(document).ready( function() {
+          $('.navbar-default').stickUp();
+        });
+      });
+    </script>
+    <!-- Smoothscroll -->
+    <script type="text/javascript" src="static/js/jquery.corner.js"></script>
+    <script src="static/js/wow.min.js"></script>
+    <script>
+     new WOW().init();
+    </script>
+    <script src="static/js/classie.js"></script>
+    <!-- Magnific Popup core JS file -->
+    <script src="static/js/jquery.magnific-popup.js"></script>
+</body>
+</html>
