@@ -18,16 +18,55 @@ permalink: /meetup/
 
 ### 프로그램
 
-Title  | Presenter
--------- | ------------------
-Greetings  | 김지원(SNU), 백승욱(Lunit)
-Deep Learning and Computer Vision  | 민현석(Samsung)
-Weakly Supervised Object Localization | 황상흠(Lunit)
-Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations | 유동근(KAIST)
-Deep Image Super-Resolution | 김지원(SNU)
-Semantic Segmentation and Visual QA | 노현우(POSTECH)
-Panel Discussion | All Presenters
-Pizza Party | All Participants
+<div class="container">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th class="text-center">Time</th>
+                    <th class="text-center">Title</th>
+                    <th class="text-center">Presenter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1:00 ~ 1:20</td>
+                    <td>Greetings</td>
+                    <td>김지원(SNU)<br>백승욱(Lunit)</td>
+                  </tr>
+                  <tr>
+                    <td>1:20 ~ 2:35</td>
+                    <td>Deep Learning and Computer Vision</td>
+                    <td>민현석(Samsung)</td>
+                  </tr>
+                  <tr>
+                    <td>3:00 ~ 3:30</td>
+                    <td>Weakly Supervised Object Localization</td>
+                    <td>황상흠(Lunit)</td>
+                  </tr>
+                  <tr>
+                    <td>3:30 ~ 4:15</td>
+                    <td>Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations</td>
+                    <td>유동근(KAIST)</td>
+                  </tr>
+                  <tr>
+                    <td>4:45 ~ 5:15</td>
+                    <td>Deep Image Super-Resolution</td>
+                    <td>김지원(SNU)</td>
+                  </tr>
+                  <tr>
+                    <td>5:15 ~ 6:00</td>
+                    <td>Semantic Segmentation and Visual QA</td>
+                    <td>노현우(Postech)</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center" colspan="3">Panel Discussion</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center" colspan="3">Pizza Party</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
 이번 모임에서는 Computer Vision에 대한 전문적인 내용이 비중있게 다뤄질 예정입니다. 다음 Meetup에서는 자연어처리, 게임AI 등 다양한 분야를 커버하고자 하오니, 관련 분야 종사자께서는 [Team AI Korea](mailto:team.aikorea@gmail.com)로 연락주시면 감사하겠습니다.
 

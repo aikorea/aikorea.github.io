@@ -23,11 +23,38 @@ body {
   color: $darkGray;
 }
 
+/*
+body {
+	height: 100%;
+	width: 100%;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.72222;
+  color: #34495e;
+  background-color: #ffffff;
+}
+*/
+
 #blog .container {
   margin: 0 auto;
   max-width: 740px;
   padding: 0 10px;
   width: 100%;
+}
+
+#meetup .container {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.table > thead > tbody > tr > td {
+  vertical-align: middle;
+}
+th {
+  text-align: center;
+  font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6 {
