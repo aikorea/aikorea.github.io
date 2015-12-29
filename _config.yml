@@ -18,7 +18,7 @@ avatar: https://scontent.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11665423_16662179635
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: jiwon@alum.mit.edu
+  email: team.aikorea@gmail.com
   facebook: awesomeai
   flickr:
   github: aikorea
@@ -54,6 +54,8 @@ baseurl: ""
 #
 
 markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
 highlighter: pygments
 permalink: /blog/:title/
 
