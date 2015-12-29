@@ -23,9 +23,9 @@ Deep Learning and Computer Vision  | 민현석(Samsung)
 Weakly Supervised Object Localization | 황상흠(Lunit)
 Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations | 유동근(KAIST)
 Deep Image Super-Resolution | 김지원(SNU)
-Semantic Segmentation and Visual QA | 노현우(Postech)
+Semantic Segmentation and Visual QA | 노현우(POSTECH)
 Panel Discussion | All Presenters
-Pizza Party | You
+Pizza Party | All Participants
 
 ### 지원방법
 
@@ -52,4 +52,4 @@ Pizza Party | You
 ### 주관
 ![logo](/static/img/aikorea-lunit.png)
 
- ![dl-korea-meetup-img1](/static/img/web_800.png)
+ ![dl-korea-meetup-img1](/static/img/20151229 deeplearning Meetup Poster.png)
