@@ -12,7 +12,9 @@ permalink: /meetup/
 
 ### 일시 : 2016년 1월 9일(토요일) 오후 1시 ~ 7시
 
-### 장소 : 팁스타운(서울시 강남구 역삼로 165 해성빌딩) 지하 1층
+### 장소 : 팁스타운(서울시 강남구 역삼로 165 해성빌딩) 지하 1층 [![map_icon](/static/img/icon/map_icon.png)](http://map.naver.com/?dlevel=7&pinType=site&pinId=18785898&x=127.0371285&y=37.4953837&enc=b64)
+
+주차는 지원되지 않으니, 가급적 대중 교통을 이용해 주시기 바랍니다.
 
 ### 프로그램
 
@@ -26,6 +28,8 @@ Deep Image Super-Resolution | 김지원(SNU)
 Semantic Segmentation and Visual QA | 노현우(POSTECH)
 Panel Discussion | All Presenters
 Pizza Party | All Participants
+
+이번 모임에서는 Computer Vision에 대한 전문적인 내용이 비중있게 다뤄질 예정입니다. 다음 Meetup에서는 자연어처리, 게임AI 등 다양한 분야를 커버하고자 하오니, 관련 분야 종사자께서는 [Team AI Korea](mailto:team.aikorea@gmail.com)로 연락주시면 감사하겠습니다.
 
 ### 지원방법
 
@@ -45,9 +49,9 @@ Pizza Party | All Participants
   - 최대한 간결하게 작성해 주세요.
   - 본인의 홈페이지, GitHub 등 외부 링크나 Resume, CV도 제출 가능합니다. 다만, 추가자료는 소개 및 이야기 작성을 대체하지 아니합니다.
 
-지원 마감은 **1월 2일(토요일) 밤**입니다(23:59까지).
+지원 마감은 **1월 2일(토요일) 자정**입니다(23:59까지).
 
-**온라인 지원을 통해 참석자 선정이 되지 않은 분은 본 행사에 입장하실 수 없습니다.**
+**참석자로 선정되지 않은 분은 본 행사에 입장하실 수 없습니다.**
 
 ### 주관
 ![logo](/static/img/aikorea-lunit.png)
