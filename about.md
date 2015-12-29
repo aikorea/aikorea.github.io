@@ -6,4 +6,4 @@ published: true
 
 # Contact
 
-[jiwon@alum.mit.edu](mailto:jiwon@alum.mit.edu)
+[team.aikorea@gmail.com](mailto:team.aikorea@gmail.com)
