@@ -64,7 +64,7 @@ permalink: /meetup/
                   </tr>
                   <tr>
                     <td>6:40 ~ 8:30</td>
-                    <td class="text-center" colspan="3">Pizza Party</td>
+                    <td class="text-center" colspan="2">Pizza Party</td>
                   </tr>
                 </tbody>
               </table>
