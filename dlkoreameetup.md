@@ -59,9 +59,11 @@ permalink: /meetup/
                     <td>노현우(Postech)</td>
                   </tr>
                   <tr>
-                    <td class="text-center" colspan="3">Panel Discussion</td>
+                    <td>6:10 ~ 6:40</td>
+                    <td class="text-center" colspan="2">Panel Discussion</td>
                   </tr>
                   <tr>
+                    <td>6:40 ~ 8:30</td>
                     <td class="text-center" colspan="3">Pizza Party</td>
                   </tr>
                 </tbody>
