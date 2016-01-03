@@ -67,6 +67,7 @@ permalink: /meetup/
                 </tbody>
               </table>
             </div>
+( [**프로그램 세부사항**](#presenter)은 아래에서 확인하실 수 있습니다. )
 
 이번 모임에서는 Computer Vision에 대한 전문적인 내용이 비중있게 다뤄질 예정입니다. 다음 Meetup에서는 자연어처리, 게임AI 등 다양한 분야를 커버하고자 하오니, 관련 분야 종사자께서는 [Team AI Korea](mailto:team.aikorea@gmail.com)로 연락주시면 감사하겠습니다.
 
