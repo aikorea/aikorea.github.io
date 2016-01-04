@@ -19,7 +19,7 @@ permalink: /meetup/
 ### 프로그램
 
 <div class="container">
-              <table class="table table-hover table-striped">
+              <table class="table table-hover table-striped table-responsive">
                 <thead>
                   <tr>
                     <th class="text-center">Time</th>
@@ -69,11 +69,14 @@ permalink: /meetup/
                 </tbody>
               </table>
             </div>
-( [**프로그램 세부사항**](#presenter)은 아래에서 확인하실 수 있습니다. )
 
 이번 모임에서는 Computer Vision에 대한 전문적인 내용이 비중있게 다뤄질 예정입니다. 다음 Meetup에서는 자연어처리, 게임AI 등 다양한 분야를 커버하고자 하오니, 관련 분야 종사자께서는 [Team AI Korea](mailto:team.aikorea@gmail.com)로 연락주시면 감사하겠습니다.
 
+{% include presenters.html %}
+
 ### 지원방법
+
+  **현재 지원이 마감되었습니다. 많은 관심과 지원 감사드립니다. 1월 5일 (화) 내로 각 지원자 여러분께 메일이 발송될 예정입니다.**
 
   본 모임은 행사 공간상의 제약으로 부득이하게 희망자를 모두 초대하진 못하게 되었습니다. 이에 행사 공간 규모에 맞는 수의 참석자만 미리 선정하여 모시게 되었고, 진심으로 양해를 구하는 바입니다.
 
@@ -85,7 +88,7 @@ permalink: /meetup/
   - 본인 소개
   - 딥러닝에 대한 나의 이야기 (연구/개발/비지니스): 과거 경험 (논문/프로젝트/스터디 등), 현재 준비 상황, 향후 활용 계획 등에 대해 자유롭게 작성해 주세요.
 
-  **현재 지원이 활발히 이어지고 있습니다. 소개와 이야기를 토대로 참석자를 선정할 예정이오니, 충분한 정보를 성의있게 담아주세요.** 그리고 다음을 지켜주세요.
+  **소개와 이야기를 토대로 참석자를 선정할 예정이오니, 충분한 정보를 성의있게 담아주세요.** 그리고 다음을 지켜주세요.
 
   - 선정 시 저희로부터 연락받으실 수 있는 이메일로 연락주세요.
   - 본명(실명)을 밝혀주세요.
