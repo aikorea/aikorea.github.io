@@ -10,7 +10,7 @@ permalink: /meetup/
 최근 머신러닝 특히 딥러닝 기술의 눈부신 발전에 힘입어 컴퓨터비전, 자연어처리, 로보틱스 등 다양한 응용 분야에서 혁신적인 결과가 관찰되고 있습니다. 국내에도 국제적 수준의 딥러닝 관련 연구를 수행하고 계신 분들이 있습니다만, 다양한 분야의 전문가들이 어우러져 학술/사회적 교류를 할수 있는 자리가 부족한 게 현실입니다. 여러 분야의 전문가들이 한 자리에 모여서 딥러닝에 관해 발표/토론할 수 있는 모임의 필요성이 꾸준히 제기됨에 따라 [**AI Korea**](https://www.facebook.com/groups/AIKoreaOpen/)와 [**Lunit Inc.**](http://lunit.io)이 함께 힘을 모았습니다. 이에 딥러닝에 열정 있는 여러분을 저희가 준비한 행사에 초대하고자 합니다.
 
 
-### 일시 : 2016년 1월 9일(토요일) 오후 1시 ~ 7시
+### 일시 : 2016년 1월 9일(토요일) 오후 1시 ~ 8시 반
 
 ### 장소 : 팁스타운(서울시 강남구 역삼로 165 해성빌딩) 지하 1층 [![map_icon](/static/img/icon/map_icon.png)](http://map.naver.com/?dlevel=7&pinType=site&pinId=18785898&x=127.0371285&y=37.4953837&enc=b64)
 
@@ -19,56 +19,56 @@ permalink: /meetup/
 ### 프로그램
 
 <div class="container">
-              <table class="table table-hover table-striped table-responsive">
-                <thead>
-                  <tr>
-                    <th class="text-center">Time</th>
-                    <th class="text-center">Title</th>
-                    <th class="text-center">Presenter</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1:00 ~ 1:20</td>
-                    <td>Greetings</td>
-                    <td>김지원(SNU)<br>백승욱(Lunit)</td>
-                  </tr>
-                  <tr>
-                    <td>1:20 ~ 2:35</td>
-                    <td>Deep Learning and Computer Vision</td>
-                    <td>민현석(Samsung)</td>
-                  </tr>
-                  <tr>
-                    <td>3:00 ~ 3:30</td>
-                    <td>Weakly Supervised Object Localization</td>
-                    <td>황상흠(Lunit)</td>
-                  </tr>
-                  <tr>
-                    <td>3:30 ~ 4:15</td>
-                    <td>Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations</td>
-                    <td>유동근(KAIST)</td>
-                  </tr>
-                  <tr>
-                    <td>4:45 ~ 5:15</td>
-                    <td>Deep Image Super-Resolution</td>
-                    <td>김지원(SNU)</td>
-                  </tr>
-                  <tr>
-                    <td>5:15 ~ 6:00</td>
-                    <td>Semantic Segmentation and Visual QA</td>
-                    <td>노현우(Postech)</td>
-                  </tr>
-                  <tr>
-                    <td>6:10 ~ 6:40</td>
-                    <td class="text-center" colspan="2">Panel Discussion</td>
-                  </tr>
-                  <tr>
-                    <td>6:40 ~ 8:30</td>
-                    <td class="text-center" colspan="2">Pizza Party</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+  <table class="table table-hover table-striped table-responsive">
+    <thead>
+      <tr>
+        <th class="text-center">Time</th>
+        <th class="text-center">Title</th>
+        <th class="text-center">Presenter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1:00 ~ 1:20</td>
+        <td>Greetings</td>
+        <td>김지원(SNU)<br>백승욱(Lunit)</td>
+      </tr>
+      <tr>
+        <td>1:20 ~ 2:35</td>
+        <td>Deep Learning and Computer Vision</td>
+        <td>민현석(Samsung)</td>
+      </tr>
+      <tr>
+        <td>3:00 ~ 3:30</td>
+        <td>Weakly Supervised Object Localization</td>
+        <td>황상흠(Lunit)</td>
+      </tr>
+      <tr>
+        <td>3:30 ~ 4:15</td>
+        <td>Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations</td>
+        <td>유동근(KAIST)</td>
+      </tr>
+      <tr>
+        <td>4:45 ~ 5:15</td>
+        <td>Deep Image Super-Resolution</td>
+        <td>김지원(SNU)</td>
+      </tr>
+      <tr>
+        <td>5:15 ~ 6:00</td>
+        <td>Semantic Segmentation and Visual QA</td>
+        <td>노현우(Postech)</td>
+      </tr>
+      <tr>
+        <td>6:10 ~ 6:40</td>
+        <td class="text-center" colspan="2">Panel Discussion</td>
+      </tr>
+      <tr>
+        <td>6:40 ~ 8:30</td>
+        <td class="text-center" colspan="2">Pizza Party</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 이번 모임에서는 Computer Vision에 대한 전문적인 내용이 비중있게 다뤄질 예정입니다. 다음 Meetup에서는 자연어처리, 게임AI 등 다양한 분야를 커버하고자 하오니, 관련 분야 종사자께서는 [Team AI Korea](mailto:team.aikorea@gmail.com)로 연락주시면 감사하겠습니다.
 
