@@ -4,6 +4,9 @@ layout: meetup
 permalink: /meetup/
 ---
 
+### NEWS
+
+Deep Learning Korea Meetup 발표 슬라이드가 공개되었습니다! 아래 프로그램 표 (발표 제목 링크) 또는 연사 소개 파트에서 슬라이드를 확인하실 수 있습니다.
 
 ### 취지
 
