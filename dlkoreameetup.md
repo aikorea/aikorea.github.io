@@ -8,6 +8,13 @@ permalink: /meetup/
 
 **Deep Learning Korea Meetup 발표 슬라이드가 공개되었습니다!!** 아래 프로그램 표에서 발표 제목 링크를 클릭하시면 슬라이드를 확인하실 수 있습니다.
 
+- [Greetings](https://drive.google.com/file/d/0B5xl2L77gZfVTGo3XzJGd3Nhc00/view?usp=sharing) - AI Korea 소개
+- [Deep Learning and Computer Vision](https://drive.google.com/file/d/0B5xl2L77gZfVbElRbnhMYTA2ekU/view?usp=sharing) - 민현석
+- Weakly Supervised Object Localization - 황상흠
+- [Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations](https://drive.google.com/file/d/0B5xl2L77gZfVZjI1dEhNckdhTE0/view?usp=sharing) - 유동근
+- [Deep Image Super-Resolution](https://drive.google.com/file/d/0B5xl2L77gZfVNWxFdnJwN1JvM28/view?usp=sharing) - 김지원
+- [Semantic Segmentation and Visual QA](https://drive.google.com/file/d/0B5xl2L77gZfVRXZxQWNmSGlBemc/view?usp=sharing) - 노현우
+
 ### 취지
 
 최근 머신러닝 특히 딥러닝 기술의 눈부신 발전에 힘입어 컴퓨터비전, 자연어처리, 로보틱스 등 다양한 응용 분야에서 혁신적인 결과가 관찰되고 있습니다. 국내에도 국제적 수준의 딥러닝 관련 연구를 수행하고 계신 분들이 있습니다만, 다양한 분야의 전문가들이 어우러져 학술/사회적 교류를 할수 있는 자리가 부족한 게 현실입니다. 여러 분야의 전문가들이 한 자리에 모여서 딥러닝에 관해 발표/토론할 수 있는 모임의 필요성이 꾸준히 제기됨에 따라 [**AI Korea**](https://www.facebook.com/groups/AIKoreaOpen/)와 [**Lunit Inc.**](http://lunit.io)이 함께 힘을 모았습니다. 이에 딥러닝에 열정 있는 여러분을 저희가 준비한 행사에 초대하고자 합니다.
@@ -33,7 +40,7 @@ permalink: /meetup/
     <tbody>
       <tr>
         <td>1:00 ~ 1:20</td>
-        <td>Greetings</td>
+        <td><a href="https://drive.google.com/file/d/0B5xl2L77gZfVTGo3XzJGd3Nhc00/view?usp=sharing">Greetings</a></td>
         <td>김지원(SNU)<br>백승욱(Lunit)</td>
       </tr>
       <tr>
