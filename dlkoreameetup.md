@@ -35,7 +35,7 @@ permalink: /meetup/
       </tr>
       <tr>
         <td>1:20 ~ 2:35</td>
-        <td>Deep Learning and Computer Vision</td>
+        <td><a href="https://drive.google.com/file/d/0B5xl2L77gZfVbElRbnhMYTA2ekU/view?usp=sharing">Deep Learning and Computer Vision</a></td>
         <td>민현석(Samsung)</td>
       </tr>
       <tr>
@@ -45,17 +45,17 @@ permalink: /meetup/
       </tr>
       <tr>
         <td>3:30 ~ 4:15</td>
-        <td>Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations</td>
+        <td><a href="https://drive.google.com/file/d/0B5xl2L77gZfVZjI1dEhNckdhTE0/view?usp=sharing">Team Lunit-KAIST in ILSVRC 2015: Challenges and Limitations</a></td>
         <td>유동근(KAIST)</td>
       </tr>
       <tr>
         <td>4:45 ~ 5:15</td>
-        <td>Deep Image Super-Resolution</td>
+        <td><a href="https://drive.google.com/file/d/0B5xl2L77gZfVNWxFdnJwN1JvM28/view?usp=sharing">Deep Image Super-Resolution</a></td>
         <td>김지원(SNU)</td>
       </tr>
       <tr>
         <td>5:15 ~ 6:00</td>
-        <td>Semantic Segmentation and Visual QA</td>
+        <td><a href="https://drive.google.com/file/d/0B5xl2L77gZfVRXZxQWNmSGlBemc/view?usp=sharing">Semantic Segmentation and Visual QA</a></td>
         <td>노현우(Postech)</td>
       </tr>
       <tr>
