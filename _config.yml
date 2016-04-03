@@ -9,7 +9,8 @@ name: Team AI Korea
 description: We do Artificial Intelligence
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://scontent.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11665423_1666217963597948_855186853774907230_n.jpg?oh=b2f0e7583a7299aa852c70f7a6b4f326&oe=56D736BB
+avatar: /static/img/avatar.jpg
+
 
 #
 # Flags below are optional
